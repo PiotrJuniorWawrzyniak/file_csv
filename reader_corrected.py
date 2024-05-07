@@ -20,15 +20,29 @@ def make_changes(data, changes):
     for change in changes:
         print(change)
         x, y, value = change.split(',')
+        x_valid = y_valid = True
         try:
             x = int(x)
-            y = int(y)
+            if not 0 <= x < len(data[0]):
+                x_valid = False
+                print(f'Nieprawidlowa wartosc x: {x}.')
         except ValueError:
-            print('Nieprawidlowa wartosc x lub y:', x, y)  # print za malo argumentow
+            x_valid = False
+            print(f'Nieprawidlowa wartosc x: {x}.')
+
+        try:
+            y = int(y)
+            if not 0 <= y < len(data):
+                y_valid = False
+                print(f'Nieprawidlowa wartosc y: {y}.')
+        except ValueError:
+            y_valid = False
+            print(f'Nieprawidlowa wartosc y: {y}.')
+
+        if not x_valid or not y_valid:
             continue
-        x = int(x)
-        y = int(y)
-        data[int(y)][int(x)] = value
+
+        data[y][x] = value
 
 
 def save_file(output_file, data):
