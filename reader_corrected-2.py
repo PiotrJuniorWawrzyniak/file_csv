@@ -43,14 +43,11 @@ def make_changes(data, changes):
         if x_valid and y_valid:
             all_changes_invalid = False
 
-            # if len(value) == 0:
-            #     print('Za malo argumentow..')
-            #     continue
-
             data[y][x] = value
 
     if all_changes_invalid:
         print('Brak poprawnych argumentow, zmiany nie zostana wprowadzone.')
+        sys.exit()
 
 
 def save_file(output_file, data):
@@ -90,4 +87,4 @@ def main():
 if main() == '__main__':
     main()
 
-# python reader_corrected-2.py in.csv out-3.csv 0,0,gitara 3,1,kubek 1,2,17 3,3,0
+# python reader_corrected-2.py in.csv out-2.csv 0,0,gitara 3,1,kubek 1,2,17 3,3,0
